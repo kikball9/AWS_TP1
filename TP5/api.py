@@ -56,7 +56,7 @@ def get_all_animal_names():
 
 # Endpoint : Liste de tous les noms d'animaux
 @app.get("/animaux/ids")
-def get_all_animal_names():
+def get_all_animal_ids():
     connection = get_db_connection()
     cursor = connection.cursor()
     cursor.execute("SELECT id FROM animaux")
