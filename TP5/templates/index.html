@@ -44,7 +44,7 @@
         <h2>Liste des animaux</h2>
         <ul>
             {% for nom in noms %}
-                <li><a href="/fiche/{{ loop.index }}">{{ nom }}</a></li>
+                <li><a href="/fiche/{{ ids[loop.index - 1] }}">{{ nom }}</a></li>
             {% endfor %}
         </ul>
     </main>

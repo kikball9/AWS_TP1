@@ -11,12 +11,16 @@ def index():
     """Page d'index affichant la liste des noms d'animaux."""
     try:
         response = requests.get(f"{API_URL}/animaux/noms")
+        response2 = requests.get(f"{API_URL}/animaux/ids")
         response.raise_for_status()
+        response2.raise_for_status()
         noms = response.json()
+        ids = response2.json()
     except requests.exceptions.RequestException as e:
         noms = []
-        print(f"Erreur lors de la récupération des noms d'animaux : {e}")
-    return render_template("index.html", noms=noms)
+        ids = []
+        print(f"Erreur lors de la récupération des noms ou ids d'animaux : {e}")
+    return render_template("index.html", noms=noms, ids=ids)
 
 @app.route("/fiche/<int:animal_id>")
 def fiche(animal_id):
