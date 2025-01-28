@@ -1,2 +1,3 @@
-__pycache__/
 rdsenv/
+__pycache__/
+.env
