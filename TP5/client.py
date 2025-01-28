@@ -35,5 +35,10 @@ def mentions_legales():
     """Page des mentions légales."""
     return render_template("mentions_legales.html")
 
+@app.route("/admin")
+def admin():
+    """Page des mentions légales."""
+    return render_template("admin.html")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

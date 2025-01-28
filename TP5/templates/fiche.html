@@ -47,7 +47,7 @@
             <h2>{{ animal.nom }}</h2>
             <img src="{{ animal.image }}" alt="{{ animal.nom }}">
             <p><strong>Description :</strong> {{ animal.description }}</p>
-            <p><strong>Décors :</strong> {{ animal.decor }}</p>
+            <p><strong>Décors :</strong> <img src="{{ animal.decors }}" alt="{{ animal.decors }}"></p>
         {% else %}
             <p>Erreur : Aucun animal trouvé.</p>
         {% endif %}

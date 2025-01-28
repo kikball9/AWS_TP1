@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Zoo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 1rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+<script>
+    // Fonction pour envoyer le formulaire en JSON via une requête fetch
+    function submitForm(event) {
+        event.preventDefault();  // Empêche le rechargement de la page
+
+        // Récupérer les valeurs des champs
+        const nom = document.getElementById("nom").value;
+        const description = document.getElementById("description").value;
+        const image = document.getElementById("image").value;
+        const decors = document.getElementById("decors").value;
+
+        // Créer l'objet JSON à envoyer
+        const data = {
+            nom: nom,
+            description: description,
+            image: image,
+            decors: decors
+        };
+
+        // Envoi des données via fetch en méthode POST avec le format JSON
+        fetch('http://44.202.201.45:5000/animaux', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)  // Envoi des données sous forme JSON
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Affichage de la réponse après ajout
+            alert('Animal ajouté avec succès ! ID : ' + data.id);
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+    }
+</script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue au Petit Zoo</h1>
+    </header>
+    <main>
+        <h2>Admin</h2>
+        <!-- Formulaire qui soumet les données en JSON -->
+        <form onsubmit="submitForm(event)">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required><br><br>
+
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" required></textarea><br><br>
+
+            <label for="image">Image (URL ou nom de fichier) :</label>
+            <input type="text" id="image" name="image" required><br><br>
+
+            <label for="decors">Décor :</label>
+            <input type="text" id="decors" name="decors" required><br><br>
+
+            <button type="submit">Ajouter l'Animal</button>
+        </form>
+    </main>
+</body>
+</html>
