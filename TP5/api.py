@@ -54,6 +54,17 @@ def get_all_animal_names():
     connection.close()
     return [nom[0] for nom in noms]
 
+# Endpoint : Liste de tous les noms d'animaux
+@app.get("/animaux/ids")
+def get_all_animal_names():
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT id FROM animaux")
+    ids = cursor.fetchall()
+    connection.close()
+    return [id[0] for id in ids]
+
+
 # Endpoint : Toutes les données d'un animal suivant son ID
 @app.get("/animaux/{animal_id}")
 def get_animal_by_id(animal_id: int):
