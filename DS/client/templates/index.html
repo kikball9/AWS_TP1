@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petit Zoo</title>
+    <title>Classe</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,13 +38,13 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenue au Petit Zoo</h1>
+        <h1>Bienvenue dans la classe</h1>
     </header>
     <main>
-        <h2>Liste des animaux</h2>
+        <h2>Liste des étudiants</h2>
         <ul>
-            {% for nom in noms %}
-                <li><a href="/fiche/{{ loop.index }}">{{ nom }}</a></li>
+            {% for etudiant in etudiants %}
+                <li>Nom : {{etudiant.nom}} <br> Prenom :{{etudiant.prenom}} <br> Naissance : {{etudiant.naissance}} <br> Image : <img src="{{etudiant.photo}}"></li><br>
             {% endfor %}
         </ul>
     </main>
